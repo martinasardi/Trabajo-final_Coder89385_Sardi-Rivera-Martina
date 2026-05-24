@@ -1,16 +1,14 @@
 # Trabajo-final_Coder89385_Sardi-Rivera-Martina
 # MI APP: ☕ Ruta cafetera Argentina
 
-Un espacio diseñado para la comunidad de amantes del café de especialidad en Argentina. Los usuarios pueden explorar reseñas de cafeterías, filtrarlas por métodos de preparación, puntuar sus experiencias con estrellas, comentar publicaciones y gestionar un perfil personalizado con su propio avatar.
+Un espacio diseñado para la comunidad de amantes del café de especialidad en Argentina. Los usuarios pueden explorar reseñas de cafeterías, filtrarlas por métodos de preparación, puntuar sus experiencias con estrellas, comentar publicaciones y gestionar un perfil personalizado con su propio perfil.
 
 ## 🎥 Video de demostración
 Instalación, navegación y flujo completo de la aplicación en funcionamiento:
-👉 **[Hacé clic acá para ver el video de la aplicación](PEGÁ_ACÁ_EL_LINK_DE_TU_VIDEO_DE_YOUTUBE_DRIVE_O_LOOM)**
+👉 **[[Hacé clic acá para ver el video de la aplicación](https://1drv.ms/v/c/e4823c21059fec3c/IQCSou-esplcR659m75bVE9BAQXTnPl7UK6zY_BasG4cf0A?e=eplxAj)]**
 
-## Orden de Prueba (Instalación Local)
-
+## Orden de Prueba
 Para ejecutar este proyecto en tu computadora, seguí estos pasos en tu terminal:
-
 1. Clonar el repositorio:
    ```bash
    git clone https://github.com

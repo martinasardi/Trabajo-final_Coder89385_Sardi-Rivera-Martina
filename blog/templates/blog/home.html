@@ -1,0 +1,110 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+
+{% block contenido %}
+<style>
+    .banner-bienvenida {
+        background-image: linear-gradient(rgba(0, 0, 0, 0.72), rgba(0, 0, 0, 0.72)), url("{% static 'blog/imágenes/fondo_cafe.png' %}");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        padding: 55px 30px;
+        text-align: center;
+        border-radius: 12px;
+        margin-bottom: 35px;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+    }
+</style>
+
+<div class="banner-bienvenida">
+    <h1 style="color: #ffffff; font-size: 2.6rem; font-weight: bold; margin: 0 0 15px 0; text-shadow: 2px 2px 5px rgba(0,0,0,0.7);">
+        Bienvenidos a Ruta cafetera Argentina
+    </h1>
+    <p style="color: #e6dfda; font-size: 1.15rem; margin: 0 0 25px 0; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); max-width: 700px; margin: 0 auto 25px auto;">
+        El espacio definitivo para los argentinos amantes del café de especialidad.
+    </p>
+
+    <div style="max-width: 550px; margin: 0 auto;">
+        <form method="GET" action="/">
+            <input type="text" name="buscar" class="buscador-cafe" placeholder="Buscar cafés o ciudades..." value="{{ request.GET.buscar }}" style="width: 100%; padding: 12px; border-radius: 8px; border: none; box-shadow: 0 2px 8px rgba(0,0,0,0.15);">
+        </form>
+    </div>
+</div>
+
+<div class="space-y-6">
+    <h3 style="color: #4a3325; border-bottom: 2px solid #efece6; padding-bottom: 10px;">Últimas reseñas de cafeterías</h3>
+    
+    {% if posts %}
+        {% for post in posts %}
+            <div class="card-cafe">
+                {% if post.imagen %}
+                   <div class="banner-cafe" style="background-image: url('{{ post.imagen.url }}');"></div>
+                {% else %}
+                    <div class="banner-cafe" style="background-image: url('https://unsplash.com');"></div>
+                {% endif %}
+                
+                <div class="card-cuerpo">
+                    <h2 class="card-titulo">{{ post.titulo }}</h2>
+                    <h5 class="card-subtitulo">{{ post.subtitulo }}</h5>
+                    
+                    <div style="display: flex; align-items: center; gap: 8px; margin: 8px 0;">
+                        <span style="font-size: 1.1rem; color: #f39c12;">
+                            {% if post.puntuacion == 1 %}⭐
+                            {% elif post.puntuacion == 2 %}⭐⭐
+                            {% elif post.puntuacion == 3 %}⭐⭐⭐
+                            {% elif post.puntuacion == 4 %}⭐⭐⭐⭐
+                            {% elif post.puntuacion == 5 %}⭐⭐⭐⭐⭐
+                            {% endif %}
+                        </span>
+                        <span style="font-size: 0.85rem; color: #8c786c; font-weight: 500;">(Calificación del autor)</span>
+                    </div>
+                    
+                    <p class="card-texto">{{ post.contenido }}</p>
+                    
+                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; color: #8c786c; margin-top: 15px; border-top: 1px solid #efece6; padding-top: 10px;">
+                        <span>Por: <strong>{{ post.autor }}</strong></span>
+                        <span>Hace {{ post.fecha|timesince }}</span>
+                    </div>
+
+                    <div class="bloque-comentarios">
+                        <h4 style="margin: 0 0 10px 0; font-size: 0.9rem; color: #8c786c;">💬 Comentarios de los lectores:</h4>
+                        {% if post.lista_comentarios %}
+                            {% for comentario in post.lista_comentarios %}
+                                <div class="comentario-item">
+                                    <div style="display: flex; justify-content: space-between; font-size: 0.8rem; margin-bottom: 4px;">
+                                        <strong>{{ comentario.autor }}</strong>
+                                        <span style="color: #8c786c;">{{ comentario.fecha|date:"d/m/Y" }}</span>
+                                    </div>
+                                    <p style="margin: 0; font-size: 0.85rem; color: #4e3d33;">{{ comentario.texto }}</p>
+                                </div>
+                            {% endfor %}
+                        {% else %}
+                            <p style="margin: 0; font-size: 0.85rem; color: #8c786c; font-style: italic;">No hay comentarios todavía.</p>
+                        {% endif %}
+
+                        <div style="margin-top: 15px; border-top: 1px dashed #d1c9bf; padding-top: 15px;">
+                            {% if request.user.is_authenticated %}
+                                <form method="POST" action="/comentario/{{ post.id }}/">
+                                    {% csrf_token %}
+                                    <input type="text" name="texto_comentario" class="buscador-cafe" style="padding: 8px; font-size: 0.85rem;" placeholder="Escribí un comentario público..." required>
+                                    <button type="submit" style="background-color: #4a3325; color: white; border: none; padding: 6px 12px; border-radius: 4px; cursor: pointer; font-size: 0.8rem; font-weight: bold; margin-top: 5px;">Enviar Comentario</button>
+                                </form>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    {% else %}
+        <div style="background-color: #e6dfd3; color: #4a3325; text-align: center; padding: 20px; border-radius: 8px;">
+            Todavía no hay reseñas cargadas o no coinciden con tu búsqueda.
+        </div>
+    {% endif %}
+
+    {% if not request.user.is_authenticated %}
+        <div style="background-color: #fceade; color: #c0392b; padding: 12px; border-radius: 6px; font-size: 0.9rem; text-align: center; font-weight: bold; margin-top: 20px; border: 1px solid #f5b041;">
+            Ingresá o registrate para escribir tu reseña de café y comentarios en las publicaciones.
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

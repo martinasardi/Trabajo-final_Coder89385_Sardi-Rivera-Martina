@@ -1,0 +1,23 @@
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+<div style="max-width: 500px; margin: 40px auto; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #efece6; text-align: center;">
+    <h2 style="color: #4a3325; font-weight: bold; margin-bottom: 20px;"> Mi perfil cafetero</h2>
+    
+    {% if perfil.avatar %}
+        <img src="{{ perfil.avatar.url }}" style="width: 120px; height: 120px; border-radius: 50%; object-fit: cover; border: 3px solid #4a3325; margin-bottom: 15px;">
+    {% else %}
+        <div style="width: 120px; height: 120px; border-radius: 50%; background: #e6dfd3; display: inline-flex; align-items: center; justify-content: center; font-size: 3rem; margin-bottom: 15px;">☕</div>
+    {% endif %}
+
+    <div style="text-align: left; margin: 20px 0; background: #f9f6f0; padding: 15px; border-radius: 8px;">
+        <p><strong>Usuario:</strong> {{ request.user.username }}</p>
+        <p><strong>Nombre:</strong> {{ request.user.first_name|default:"No cargado" }}</p>
+        <p><strong>Apellido:</strong> {{ request.user.last_name|default:"No cargado" }}</p>
+        <p><strong>Email:</strong> {{ request.user.email|default:"No cargado" }}</p>
+    </div>
+
+    <a href="/perfil/editar/" style="display: block; background-color: #4a3325; color: white; border: none; padding: 12px; border-radius: 8px; text-decoration: none; font-weight: bold; margin-bottom: 15px;">Modificar mis datos</a>
+    <a href="/" style="color: #8c786c; text-decoration: none; font-size: 0.9rem;">← Volver al Inicio</a>
+</div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+<div style="max-width: 450px; margin: 40px auto; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #efece6;">
+    <h2 style="color: #4a3325; text-align: center; font-weight: bold; margin-bottom: 5px;">Crear cuenta</h2>
+    <p style="color: #8c786c; font-size: 0.9rem; text-align: center; margin-bottom: 25px;">Formá parte de la comunidad de Ruta cafetera.</p>
+    
+    <form method="POST">
+        {% if error_usuario %}
+    <div style="background-color: #f8d7da; color: #721c24; border: 1px solid #f5c6cb; padding: 10px; border-radius: 6px; margin-bottom: 20px; font-size: 0.9rem; font-weight: bold; text-align: center;">
+        {{ error_usuario }}
+    </div>
+        {% endif %}
+        {% csrf_token %}
+        
+        <p>
+            <label style="font-weight: 500; color: #4a3325;">Nombre de Usuario o Email:</label><br>
+            <input type="text" name="username" class="buscador-cafe" placeholder="Ej: mati@email.com o martinacafes" required>
+            <small style="color: #8c786c; display: block; margin-top: 4px;">Debe tener al menos 8 caracteres.</small>
+        </p>
+        
+        <p style="margin-top: 15px;">
+            <label style="font-weight: 500; color: #4a3325;">Contraseña:</label><br>
+            <input type="password" name="password1" class="buscador-cafe" placeholder="Escribí tu contraseña" required>
+            <small style="color: #8c786c; display: block; margin-top: 4px;">Elegí una clave segura.</small>
+        </p>
+        
+        <p style="margin-top: 15px;">
+            <label style="font-weight: 500; color: #4a3325;">Confirmar contraseña:</label><br>
+            <input type="password" name="password2" class="buscador-cafe" placeholder="Repetí tu contraseña para verificar" required>
+        </p>
+
+        <button type="submit" style="background-color: #4a3325; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1rem; font-weight: bold; margin-top: 20px;">Registrarme</button>
+    </form>
+    
+    <div style="text-align: center; margin-top: 20px; font-size: 0.9rem;">
+        <a href="/" style="color: #8c786c; text-decoration: none;">← Volver al Inicio</a>
+    </div>
+</div>
+{% endblock %}

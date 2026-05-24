@@ -1,0 +1,17 @@
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+<div style="max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #efece6;">
+    <h2 style="color: #4a3325; text-align: center; margin-bottom: 25px;">Compartir una nueva reseña cafetera</h2>
+
+    <form method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" style="background-color: #4a3325; color: white; border: none; padding: 12px 20px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1rem; font-weight: bold;">Publicar Reseña</button>
+    </form>
+
+    <div style="text-align: center; margin-top: 15px;">
+        <a href="/" style="color: #8c786c; text-decoration: none; font-size: 0.9rem;">Volver al Inicio</a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+<div style="max-width: 600px; margin: 40px auto; background: white; padding: 40px 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #efece6; text-align: center;">
+    
+    <h2 style="color: #4a3325; font-weight: bold; margin-bottom: 10px;">Cafés cerca de mí</h2>
+    <p style="color: #8c786c; font-size: 0.95rem; margin-bottom: 30px;">Tocá el botón para detectar tu ubicación y encontrar las cafeterías de especialidad más cercanas.</p>
+    
+    <div style="margin-bottom: 35px;">
+        <button onclick="buscarCafesCerca()" 
+                style="display: inline-block; background-color: #d4a373; color: #2c1b11; border: none; padding: 15px 30px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 1.1rem; box-shadow: 0 4px 10px rgba(212, 163, 115, 0.3); cursor: pointer; transition: background 0.3s;">
+            🗺️ Buscar cafeterías en mi ubicación
+        </button>
+    </div>
+    
+    <hr style="border: 0; border-top: 1px solid #efece6; margin-bottom: 25px;">
+    <a href="/" style="color: #4a3325; text-decoration: none; font-weight: bold; font-size: 0.95rem;">← Volver al Inicio</a>
+</div>
+
+<script>
+function buscarCafesCerca() {
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function(position) {
+            var lat = position.coords.latitude;
+            var lon = position.coords.longitude;
+            
+            var urlGoogleMaps = "https://www.google.com/maps/search/cafeterias/@" + lat + "," + lon + ",16z/data=!3m1!4b1!4m2!2m1!6e5";
+        
+            window.open(urlGoogleMaps, '_blank');
+        }, function(error) {
+            alert("Para una búsqueda más exacta, habilitá el permiso de ubicación. Te redirigimos a la búsqueda general.");
+            window.open("https://google.com", '_blank');
+        });
+    } else {
+        window.open("https://google.com", '_blank');
+    }
+}
+</script>
+{% endblock %}

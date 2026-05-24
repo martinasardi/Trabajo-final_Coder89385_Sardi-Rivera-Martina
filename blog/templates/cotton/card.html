@@ -1,0 +1,18 @@
+<div class="bg-white rounded-xl shadow-sm border border-[#EFECE6] overflow-hidden hover:shadow-md transition duration-300 p-6 mb-6">
+    <div class="flex justify-between items-start mb-3">
+        <div>
+            <h2 class="text-2xl font-bold text-[#4A3325] mb-1">{{ titulo }}</h2>
+            <h5 class="text-sm font-medium text-[#8C786C]">{{ subtitulo }}</h5>
+        </div>
+        <span class="text-xs bg-[#F5EBE6] text-[#4A3325] px-2.5 py-1 rounded-full font-semibold">
+            {{ metodo|default:"Filtrado" }}
+        </span>
+    </div>
+    
+    <p class="text-[#4E3D33] leading-relaxed my-4 text-base">{{ slot }}</p>
+    
+    <div class="flex items-center justify-between pt-4 border-t border-[#F5EBE6] text-xs text-[#8C786C]">
+        <span>Por <strong class="text-[#4A3325]">{{ autor }}</strong></span>
+        <span>{{ fecha|date:"d/m/Y" }}</span>
+    </div>
+</div>

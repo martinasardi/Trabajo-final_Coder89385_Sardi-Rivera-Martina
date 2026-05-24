@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+
+{% block contenido %}
+<div style="max-width: 450px; margin: 40px auto; background: white; padding: 35px; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.05); border: 1px solid #efece6; text-align: center;">
+    <div style="font-size: 3rem; margin-bottom: 10px;">☕</div>
+    <h2 style="color: #4a3325; margin-bottom: 5px; font-weight: bold;">¡Hola, Cafetero/a!</h2>
+    <p style="color: #8c786c; font-size: 0.95rem; margin-bottom: 25px;">Qué alegría tenerte de vuelta por la ruta del buen café.</p>
+    
+    {% if error_mensaje %}
+        <div style="background-color: #f8d7da; color: #721c24; padding: 10px; border-radius: 6px; margin-bottom: 15px; font-size: 0.9rem; text-align: left;">
+            {{ error_mensaje }}
+        </div>
+    {% endif %}
+
+    <form method="POST">
+        {% csrf_token %}
+        <div style="text-align: left;">
+            <p><label style="font-weight: 500; color: #4a3325;">Usuario:</label><br>
+            <input type="text" name="username" class="buscador-cafe" placeholder="Tu nombre de usuario" required></p>
+            
+            <p><label style="font-weight: 500; color: #4a3325;">Contraseña:</label><br>
+            <input type="password" name="password" class="buscador-cafe" placeholder="Tu contraseña" required></p>
+        </div>
+        
+        <button type="submit" style="background-color: #4a3325; color: white; border: none; padding: 12px; border-radius: 8px; cursor: pointer; width: 100%; font-size: 1rem; font-weight: bold; margin-top: 10px; transition: background 0.3s;">Ingresar a la ruta</button>
+    </form>
+    
+    <div style="margin-top: 20px; font-size: 0.85rem;">
+        <a href="#" onclick="alert('Funcionalidad en desarrollo: Se enviará un correo de restablecimiento a tu casilla vinculada.')" style="color: #8c786c; text-decoration: underline;">¿Olvidaste tu contraseña? Recuperar aquí</a>
+    </div>
+    <hr style="border: 0; border-top: 1px solid #efece6; margin: 20px 0;">
+    <p style="font-size: 0.9rem; color: #4e3d33;">¿No tenés cuenta? <a href="/register/" style="color: #d4a373; font-weight: bold; text-decoration: none;">Registrate gratis</a></p>
+</div>
+{% endblock %}

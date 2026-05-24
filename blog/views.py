@@ -95,13 +95,13 @@ def register(request):
 @login_required
 def ver_perfil(request):
    """Visualiza la información del perfil del usuario actual."""
-   perfil = Perfil.objects.get_or_create(usuario=request.user)[0]
+   perfil, _ = Perfil.objects.get_or_create(usuario=request.user)
    return render(request, 'blog/ver_perfil.html', {'perfil': perfil})
 
 @login_required
 def editar_perfil(request):
     """Modifica y guarda los datos de usuario y avatar de forma persistente."""
-    perfil_actual, created = Perfil.objects.get_or_create(usuario=request.user)
+    perfil_actual, _ = Perfil.objects.get_or_create(usuario=request.user)
 
     if request.method == 'POST':
         user_form = UserUpdateForm(request.POST, instance=request.user)

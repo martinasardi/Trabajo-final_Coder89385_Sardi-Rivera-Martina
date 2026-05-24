@@ -37,12 +37,11 @@
     {% if posts %}
         {% for post in posts %}
             <div class="card-cafe">
-                {% if post.imagen %}
-                   <div class="banner-cafe" style="background-image: url('{{ post.imagen.url }}');"></div>
-                {% else %}
-                    <div class="banner-cafe" style="background-image: url('https://unsplash.com');"></div>
-                {% endif %}
-                
+        {% if post.imagen %}
+            <img src="{{ post.imagen.url }}" alt="{{ post.titulo }}" class="banner-cafe" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+        {% else %}
+            <img src="{% static 'blog/imágenes/default_cafe.png' %}" alt="Café por defecto" class="banner-cafe" style="width: 100%; height: 200px; object-fit: cover; display: block;">
+        {% endif %}     
                 <div class="card-cuerpo">
                     <h2 class="card-titulo">{{ post.titulo }}</h2>
                     <h5 class="card-subtitulo">{{ post.subtitulo }}</h5>

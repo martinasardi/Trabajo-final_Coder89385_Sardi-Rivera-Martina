@@ -94,10 +94,9 @@ def register(request):
 
 @login_required
 def ver_perfil(request):
-    """Visualiza la información del perfil del usuario actual."""
-    perfil, created = Perfil.objects.get_or_create(usuario=request.user)
-    return render(request, 'blog/ver_perfil.html', {'perfil': perfil})
-
+   """Visualiza la información del perfil del usuario actual."""
+   perfil = Perfil.objects.get_or_create(usuario=request.user)[0]
+   return render(request, 'blog/ver_perfil.html', {'perfil': perfil})
 
 @login_required
 def editar_perfil(request):
@@ -109,8 +108,9 @@ def editar_perfil(request):
         perfil_form = PerfilForm(request.POST, request.FILES, instance=perfil_actual)
 
         if user_form.is_valid() and perfil_form.is_valid():
-            user_form.save()
-            perfil_form.save()
+            perfil = perfil_form.save(commit=False)
+            perfil.usuario = request.user 
+            perfil.save()
             return redirect('/perfil/') 
     else:
         user_form = UserUpdateForm(instance=request.user)

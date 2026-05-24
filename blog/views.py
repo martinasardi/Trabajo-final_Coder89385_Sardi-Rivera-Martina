@@ -111,6 +111,8 @@ def editar_perfil(request):
             perfil = perfil_form.save(commit=False)
             perfil.usuario = request.user 
             perfil.save()
+            user_form.save()
+            perfil_form.save()
             return redirect('/perfil/') 
     else:
         user_form = UserUpdateForm(instance=request.user)

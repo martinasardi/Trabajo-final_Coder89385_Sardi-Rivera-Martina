@@ -5,7 +5,7 @@ Un espacio diseñado para la comunidad de amantes del café de especialidad en A
 
 ## 🎥 Video de demostración
 Instalación, navegación y flujo completo de la aplicación en funcionamiento:
-👉 **[[Hacé clic acá para ver el video de la aplicación](https://1drv.ms/v/c/e4823c21059fec3c/IQCSou-esplcR659m75bVE9BAQXTnPl7UK6zY_BasG4cf0A?e=eplxAj)]**
+ **[[Hacé clic acá para ver el video de la aplicación](https://1drv.ms/v/c/e4823c21059fec3c/IQCSou-esplcR659m75bVE9BAQXTnPl7UK6zY_BasG4cf0A?e=eplxAj)]**
 
 ## Orden de Prueba
 Para ejecutar este proyecto en tu computadora, seguí estos pasos en tu terminal:

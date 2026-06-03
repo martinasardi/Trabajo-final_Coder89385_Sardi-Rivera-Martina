@@ -3,6 +3,10 @@
 
 Un espacio diseñado para la comunidad de amantes del café de especialidad en Argentina. Los usuarios pueden explorar reseñas de cafeterías, filtrarlas por métodos de preparación, puntuar sus experiencias con estrellas, comentar publicaciones y gestionar un perfil personalizado con su propio perfil.
 
+## Aplicación Desplegada en Vivo
+El proyecto se encuentra activo y accesible públicamente a través del siguiente enlace:
+👉 **[https://ruta-cafetera-argentina.onrender.com](https://onrender.cohttps://ruta-cafetera-argentina.onrender.comm)**
+
 ## 🎥 Video de demostración
 Instalación, navegación y flujo completo de la aplicación en funcionamiento:
  **[[Hacé clic acá para ver el video de la aplicación](https://1drv.ms/v/c/e4823c21059fec3c/IQCSou-esplcR659m75bVE9BAQXTnPl7UK6zY_BasG4cf0A?e=eplxAj)]**
@@ -43,13 +47,12 @@ Para ejecutar este proyecto en tu computadora, seguí estos pasos en tu terminal
    ```bash
    python manage.py migrate
    ```
-
 5. **Crear usuario Administrador:**
    Para acceder al panel administrativo de Django (`/admin`) y gestionar los métodos de café, ejecute el siguiente comando:
    ```bash
       python manage.py createsuperuser
    ```
-5. Iniciar el servidor local:
+6. Iniciar el servidor local:
    ```bash
    python manage.py runserver
    ```

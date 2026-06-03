@@ -5,7 +5,7 @@ Un espacio diseñado para la comunidad de amantes del café de especialidad en A
 
 ## Aplicación Desplegada en Vivo
 El proyecto se encuentra activo y accesible públicamente a través del siguiente enlace:
-👉 **[https://ruta-cafetera-argentina.onrender.com](https://onrender.cohttps://ruta-cafetera-argentina.onrender.comm)**
+👉 **[https://ruta-cafetera-argentina.onrender.com]**
 
 ## Credenciales de Acceso para la Evaluación (Demo de Prueba)
 Para probar los flujos interactivos de autenticación, CRUD y comentarios sin necesidad de registrarse, puede utilizar el siguiente usuario de pruebas:
@@ -72,7 +72,7 @@ Para ejecutar este proyecto en tu computadora, seguí estos pasos en tu terminal
 
 3. **Instalar dependencias obligatorias:**
    ```bash
-   python.exe -m pip install -r requirements.txt
+   python -m pip install -r requirements.txt
    ```
 
 4. **Ejecutar las migraciones de la base de datos:**

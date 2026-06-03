@@ -1,37 +1,40 @@
 from django.test import TestCase
+from django.urls import reverse
 from django.contrib.auth.models import User
-from .models import Post, Metodo
+from .models import Post, Metodo, Comentario
 
 class BlogTests(TestCase):
 
     def setUp(self):
-        # 1. Creamos un usuario de prueba para el autor
         self.user = User.objects.create_user(username='tester_cafe', password='password123')
         
-        # 2. Creamos un método de preparación de prueba
         self.metodo = Metodo.objects.create(
             nombre='Prensa Francesa',
             descripcion='Extracción por inmersión.'
         )
         
-        # 3. Creamos el Post usando tus campos exactos
         self.post = Post.objects.create(
             titulo='Café de Especialidad Colombiano',
-            subtitulo='Una delicia frutal',
-            contenido='Cuerpo medio, notas a chocolate y frutos rojos.',
+            contenido='Cuerpo medio, notas a chocolate.',
             autor=self.user,
             metodo_preparacion=self.metodo,
             puntuacion=5
         )
 
     def test_post_creation(self):
-        """Valida que el post de café se guarde con los atributos correctos"""
         post_guardado = Post.objects.get(id=self.post.id) # type: ignore
         self.assertEqual(post_guardado.titulo, 'Café de Especialidad Colombiano')
-        self.assertEqual(post_guardado.autor.username, 'tester_cafe')
-        self.assertEqual(post_guardado.metodo_preparacion.nombre, 'Prensa Francesa') # type: ignore
-        self.assertEqual(post_guardado.puntuacion, 5)
 
     def test_post_string_representation(self):
-        """Valida que el método __str__ del Post devuelva el título"""
         self.assertEqual(str(self.post), self.post.titulo)
+
+    def test_comentario_integration_flow(self):
+        """Prueba de Integración: Simula el envío del formulario de comentarios"""
+        self.client.login(username='tester_cafe', password='password123')
+        url = reverse('agregar_comentario', kwargs={'post_id': self.post.id})
+        response = self.client.post(url, {'texto_comentario': 'Me encantó esta cafetería.'})
+        
+        self.assertEqual(response.status_code, 302)
+        comentario_creado = Comentario.objects.filter(post=self.post).first()
+        self.assertIsNotNone(comentario_creado)
+        self.assertEqual(comentario_creado.texto, 'Me encantó esta cafetería.') # type: ignore

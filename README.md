@@ -7,7 +7,10 @@ Un espacio diseñado para la comunidad de amantes del café de especialidad en A
 El proyecto se encuentra activo y accesible públicamente a través del siguiente enlace:
 👉 **[https://ruta-cafetera-argentina.onrender.com](https://onrender.cohttps://ruta-cafetera-argentina.onrender.comm)**
 
-## Vista del Producto (Flujo de la Aplicación)
+##git add .
+git commit -m "Docs: agregar flujo de capturas estructurado al README"
+git push origin main
+ Vista del Producto (Flujo de la Aplicación)
 A continuación se detalla el recorrido visual de la plataforma paso a paso para facilitar la evaluación del producto final sin depender de la URL en línea:
 
 ### 1. Inicio / Landing Page
@@ -32,14 +35,13 @@ Instalación, navegación y flujo completo de la aplicación en funcionamiento:
  LINK DEL VIDEO: https://1drv.ms/v/c/e4823c21059fec3c/IQCSou-esplcR659m75bVE9BAQXTnPl7UK6zY_BasG4cf0A?e=eplxAj
 
 ## Criterios de Aceptación Cumplidos (Para el Evaluador)
-Para facilitar la revisión del proyecto, se detallan las correcciones y sugerencias implementadas con éxito:
+A continuación se detallan las funcionalidades principales implementadas y validadas en esta entrega final:
 
-*   **Seguridad de Claves:** Se refactorizó `core/settings.py`. La `SECRET_KEY` y el modo `DEBUG` ya no están hardcodeados; se gestionan de forma oculta a través de variables de entorno con `python-dotenv` mediante un archivo `.env`.
-*   **Pruebas Automatizadas:** Se completó el archivo `blog/tests.py` incluyendo tests unitarios para validar de forma automática la correcta creación de objetos `Post` y sus métodos internos (`__str__`).
-*   **Estandarización de Dependencias:** El archivo `requirements.txt` se limpió por completo, se eliminaron líneas duplicadas y se fijó a una versión estable de Django (`5.1.5`). Además, se guardó estrictamente en codificación **UTF-8** para garantizar la compatibilidad de instalación.
-*   **Despliegue Exitoso:** La aplicación está en producción y es 100% funcional en la plataforma **Render**, utilizando `gunicorn` como servidor de producción y `whitenoise` para el manejo de archivos estáticos.
-*   **Acceso Administrativo:** Se documentó el comando `createsuperuser` para permitir la creación del administrador local.
-
+*   **CRUD Completo de Reseñas:** La aplicación permite listar las cafeterías en la página de inicio, ver la información extendida en una vista única y crear nuevas publicaciones a través de un formulario interactivo. *(Evidencia: Ver Capturas "Home", "crear_post", "hacer_comentarios")*.
+*   **Persistencia y Relaciones en Base de Datos:** Los posts se vinculan de forma obligatoria con un Usuario (Autor) y opcionalmente con un Método de Preparación (V60, Prensa Francesa, etc.). Los cambios e inserciones se guardan de forma permanente en la base de datos. *(Evidencia: Ver Captura "crear_post" y Modelo Post en blog/models.py)*.
+*   **Autenticación y Restricción de Accesos:** El sistema valida las credenciales de ingreso. Solo los usuarios que hayan iniciado sesión de forma exitosa tienen permitido comentar publicaciones o acceder al formulario para crear nuevas reseñas de café. *(Evidencia: Ver Captura "login")*.
+*   **Validación de Formularios:** No se permite guardar una reseña si faltan los campos obligatorios como el título o el contenido principal; el sistema de Django frena el envío y muestra los mensajes de error correspondientes en el formulario.
+*   **Sistema de Interacción (Comentarios y Calificaciones):** Los usuarios pueden puntuar la experiencia seleccionando un rango de estrellas (1 a 5) y dejar comentarios de texto que se renderizan y listan cronológicamente abajo de cada post. *(Evidencia: Ver Capturas "crear_post" y "hacer_comentarios")*.
 
 ## Orden de Prueba (Uso local)
 Para ejecutar este proyecto en tu computadora, seguí estos pasos en tu terminal:

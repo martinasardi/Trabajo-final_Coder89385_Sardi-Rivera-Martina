@@ -26,10 +26,10 @@ class BlogTests(TestCase):
 
     def test_post_creation(self):
         """Valida que el post de café se guarde con los atributos correctos"""
-        post_guardado = Post.objects.get(id=self.post.id)
+        post_guardado = Post.objects.get(id=self.post.id) # type: ignore
         self.assertEqual(post_guardado.titulo, 'Café de Especialidad Colombiano')
         self.assertEqual(post_guardado.autor.username, 'tester_cafe')
-        self.assertEqual(post_guardado.metodo_preparacion.nombre, 'Prensa Francesa')
+        self.assertEqual(post_guardado.metodo_preparacion.nombre, 'Prensa Francesa') # type: ignore
         self.assertEqual(post_guardado.puntuacion, 5)
 
     def test_post_string_representation(self):

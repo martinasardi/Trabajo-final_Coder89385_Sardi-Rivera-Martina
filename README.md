@@ -7,10 +7,12 @@ Un espacio diseñado para la comunidad de amantes del café de especialidad en A
 El proyecto se encuentra activo y accesible públicamente a través del siguiente enlace:
 👉 **[https://ruta-cafetera-argentina.onrender.com](https://onrender.cohttps://ruta-cafetera-argentina.onrender.comm)**
 
-##git add .
-git commit -m "Docs: agregar flujo de capturas estructurado al README"
-git push origin main
- Vista del Producto (Flujo de la Aplicación)
+## Credenciales de Acceso para la Evaluación (Demo de Prueba)
+Para probar los flujos interactivos de autenticación, CRUD y comentarios sin necesidad de registrarse, puede utilizar el siguiente usuario de pruebas:
+*   **Usuario:** `tester_cafe`
+*   **Contraseña:** `password123`
+
+# Vista del Producto (Flujo de la Aplicación)
 A continuación se detalla el recorrido visual de la plataforma paso a paso para facilitar la evaluación del producto final sin depender de la URL en línea:
 
 ### 1. Inicio / Landing Page

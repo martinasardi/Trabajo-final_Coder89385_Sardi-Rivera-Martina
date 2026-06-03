@@ -14,6 +14,8 @@ urlpatterns = [
     path('nuevo-post/', views.crear_post, name='crear_post'),
     path('comentario/<int:post_id>/', views.agregar_comentario, name='agregar_comentario'),
     path('cafes-cerca/', views.cafes_cerca, name='cafes_cerca'),
+    path('post/<int:pk>/editar/', views.editar_post, name='editar_post'),
+    path('post/<int:pk>/eliminar/', views.eliminar_post, name='eliminar_post'),
 ]
 
 if settings.DEBUG:

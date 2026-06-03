@@ -34,16 +34,15 @@ A continuación se detalla el recorrido visual de la plataforma paso a paso para
 ## 🎥 Video de demostración
 Instalación, navegación y flujo completo de la aplicación en funcionamiento:
  **[[Hacé clic acá para ver el video de la aplicación](https://1drv.ms/v/c/e4823c21059fec3c/IQCSou-esplcR659m75bVE9BAQXTnPl7UK6zY_BasG4cf0A?e=eplxAj)]**
- LINK DEL VIDEO: https://1drv.ms/v/c/e4823c21059fec3c/IQCSou-esplcR659m75bVE9BAQXTnPl7UK6zY_BasG4cf0A?e=eplxAj
 
 ## Criterios de Aceptación Cumplidos (Para el Evaluador)
-A continuación se detallan las funcionalidades principales implementadas y validadas en esta entrega final:
+Para facilitar la revisión del proyecto, se detallan las correcciones funcionales implementadas con éxito:
 
-*   **CRUD Completo de Reseñas:** La aplicación permite listar las cafeterías en la página de inicio, ver la información extendida en una vista única y crear nuevas publicaciones a través de un formulario interactivo. *(Evidencia: Ver Capturas "Home", "crear_post", "hacer_comentarios")*.
-*   **Persistencia y Relaciones en Base de Datos:** Los posts se vinculan de forma obligatoria con un Usuario (Autor) y opcionalmente con un Método de Preparación (V60, Prensa Francesa, etc.). Los cambios e inserciones se guardan de forma permanente en la base de datos. *(Evidencia: Ver Captura "crear_post" y Modelo Post en blog/models.py)*.
-*   **Autenticación y Restricción de Accesos:** El sistema valida las credenciales de ingreso. Solo los usuarios que hayan iniciado sesión de forma exitosa tienen permitido comentar publicaciones o acceder al formulario para crear nuevas reseñas de café. *(Evidencia: Ver Captura "login")*.
-*   **Validación de Formularios:** No se permite guardar una reseña si faltan los campos obligatorios como el título o el contenido principal; el sistema de Django frena el envío y muestra los mensajes de error correspondientes en el formulario.
-*   **Sistema de Interacción (Comentarios y Calificaciones):** Los usuarios pueden puntuar la experiencia seleccionando un rango de estrellas (1 a 5) y dejar comentarios de texto que se renderizan y listan cronológicamente abajo de cada post. *(Evidencia: Ver Capturas "crear_post" y "hacer_comentarios")*.
+*   **CRUD Completo (Create/Read/Update/Delete):** La aplicación permite listar y leer reseñas de café, crear nuevos registros mediante formularios protegidos, y ofrece opciones exclusivas para que los autores editen o eliminen sus publicaciones. *(Evidencia: Ver Capturas #1, #2, #3, #4 y archivos blog/views.py y blog/urls.py)*.
+*   **Persistencia y Relaciones en Base de Datos:** Los posts se vinculan con un Usuario (Autor) y un Método de Preparación (V60, Prensa Francesa, etc.). Los cambios e inserciones se guardan de forma permanente utilizando `BigAutoField` para optimizar las claves primarias.
+*   **Autenticación y Restricción de Accesos:** El sistema valida las credenciales de ingreso. Solo los usuarios que hayan iniciado sesión tienen permitido comentar publicaciones o acceder a las operaciones de creación, edición y eliminación de posts.
+*   **Seguridad de Claves:** Se refactorizó `core/settings.py`. La `SECRET_KEY` y el modo `DEBUG` se gestionan de forma oculta a través de variables de entorno con `python-dotenv`.
+*   **Estandarización de Dependencias:** El archivo `requirements.txt` está limpio, fijado en una versión estable de Django (`5.1.5`) y codificado estrictamente en **UTF-8**.
 
 ## Orden de Prueba (Uso local)
 Para ejecutar este proyecto en tu computadora, seguí estos pasos en tu terminal:

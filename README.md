@@ -10,34 +10,55 @@ Instalación, navegación y flujo completo de la aplicación en funcionamiento:
 
 ## Orden de Prueba
 Para ejecutar este proyecto en tu computadora, seguí estos pasos en tu terminal:
-1. Clonar el repositorio:
+1. **Clonar el repositorio:**
    ```bash
    git clone https://github.com
-   cd tu-repositorio
+   cd Trabajo-final_Coder89385_Sardi-Rivera-Martina
    ```
-2. Crear y activar el entorno virtual:
-   * En Windows:
-     ```bash
-     python -m venv .venv
-     .venv\Scripts\activate
+
+2. **Configurar el entorno y las claves:**
+   * Crear y activar el entorno virtual:
+     * **En Windows:**
+       ```bash
+       python -m venv venv
+       .\venv\Scripts\activate
      ```
-   * En Mac/Linux:
-     ```bash
-     python3 -m venv .venv
-     source .venv/bin/activate
+     * **En Mac/Linux:**
+       ```bash
+       python3 -m venv venv
+       source venv/bin/activate
+       ```
+   * Crear un archivo `.env` en la raíz del proyecto y agregar las siguientes variables:
+     ```env
+     SECRET_KEY=tu_clave_secreta_aqui
+     DEBUG=True
      ```
-3. Instalar dependencias obligatorias:
+
+3. **Instalar dependencias obligatorias:**
    ```bash
-   pip install -r requirements.txt
+   python.exe -m pip install -r requirements.txt
    ```
-4. Ejecutar las migraciones de la base de datos:
+
+4. **Ejecutar las migraciones de la base de datos:**
    ```bash
    python manage.py migrate
+   ```
+
+5. **Crear usuario Administrador:**
+   Para acceder al panel administrativo de Django (`/admin`) y gestionar los métodos de café, ejecute el siguiente comando:
+   ```bash
+      python manage.py createsuperuser
    ```
 5. Iniciar el servidor local:
    ```bash
    python manage.py runserver
    ```
    *Ingresá en tu navegador a: `http://127.0.0.1:8000/`*
+
+## Pruebas Automatizadas
+Para validar el correcto funcionamiento y la lógica de creación de posts de café, ejecute:
+```bash
+python manage.py test
+```
 
 Desarrollado por Martina Sardi - Curso de Python en Coderhouse.
